@@ -1,7 +1,10 @@
 package com.hasee.ideon.model;
 
 import javax.persistence.*;
-
+/**
+ * Copyright (c) 2019. hasumaWebApplications - All Rights Reserved
+ * Created by Hasitha Amarathunga on 11/23/2019.
+ */
 @Entity
 @Table(name = "IDN_USER")
 public class User
@@ -19,6 +22,9 @@ public class User
 
 	@Column(name = "ADDRESS")
 	String address;
+
+	@Column(name = "EMAIL")
+	String email;
 
 	@Column(name = "MOBILE_NO")
 	String mobile;
@@ -67,6 +73,16 @@ public class User
 	public void setAddress( String address )
 	{
 		this.address = address;
+	}
+
+	public String getEmail()
+	{
+		return email;
+	}
+
+	public void setEmail( String email )
+	{
+		this.email = email;
 	}
 
 	public String getMobile()

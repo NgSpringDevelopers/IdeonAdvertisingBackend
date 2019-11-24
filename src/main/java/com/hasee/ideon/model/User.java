@@ -14,22 +14,22 @@ public class User
 	@Column
 	Long id;
 
-	@Column(name = "USERNAME")
+	@Column(name = "USERNAME", nullable = false)
 	String username;
 
-	@Column(name = "FULL_NAME")
+	@Column(name = "FULL_NAME", nullable = false)
 	String fullName;
 
-	@Column(name = "ADDRESS")
+	@Column(name = "ADDRESS", nullable = false)
 	String address;
 
-	@Column(name = "EMAIL")
+	@Column(name = "EMAIL", nullable = false)
 	String email;
 
-	@Column(name = "MOBILE_NO")
+	@Column(name = "MOBILE_NO", nullable = false)
 	String mobile;
 
-	@Column(name = "PASSWORD")
+	@Column(name = "PASSWORD", nullable = false)
 	String password;
 
 	@Column(name = "LOGIN_TOKEN")

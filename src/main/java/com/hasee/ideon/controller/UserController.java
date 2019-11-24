@@ -31,6 +31,15 @@ public class UserController implements IUserController
 		if (user.getEmail() == null) {
 			return ResponseEntity.badRequest().body( new ESResponse<>( IConstants.RESPONSE_STATUS_ERROR, environment.getProperty( "user.email.missing" ) ) );
 		}
+		if (user.getFullName() == null) {
+			return ResponseEntity.badRequest().body( new ESResponse<>( IConstants.RESPONSE_STATUS_ERROR, environment.getProperty( "user.fullName.missing" ) ) );
+		}
+		if (user.getAddress() == null) {
+			return ResponseEntity.badRequest().body( new ESResponse<>( IConstants.RESPONSE_STATUS_ERROR, environment.getProperty( "user.address.missing" ) ) );
+		}
+		if (user.getPassword() == null) {
+			return ResponseEntity.badRequest().body( new ESResponse<>( IConstants.RESPONSE_STATUS_ERROR, environment.getProperty( "user.password.missing" ) ) );
+		}
 		return ResponseEntity.ok().body( userService.registerUser( user ) );
 	}
 

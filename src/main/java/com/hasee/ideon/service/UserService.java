@@ -25,8 +25,20 @@ public class UserService implements IUserService
 	public ESResponse registerUser( User user )
 	{
 		try {
-			userRepository.save( user );
-			return  new ESResponse<>( IConstants.RESPONSE_STATUS_OK, environment.getProperty( "user.create.success" ) );
+			User user1 = userRepository.findByUsername( user.getUsername() );
+			if (user1 != null) {
+				return new ESResponse<>( IConstants.RESPONSE_STATUS_ERROR, environment.getProperty( "user.username.already.taken" ) );
+			}
+			User user2 = userRepository.findByEmail( user.getEmail() );
+			if (user2 != null) {
+				return new ESResponse<>( IConstants.RESPONSE_STATUS_ERROR, environment.getProperty( "user.email.already.taken" ) );
+			}
+			User user3 = userRepository.findByMobile( user.getMobile() );
+			if (user3 != null) {
+				return new ESResponse<>( IConstants.RESPONSE_STATUS_ERROR, environment.getProperty( "user.mobile.already.taken" ) );
+			}
+			User user4 = userRepository.save( user );
+			return  new ESResponse<>( IConstants.RESPONSE_STATUS_OK, user4, environment.getProperty( "user.create.success" ) );
 		} catch ( Exception e ) {
 			return new ESResponse<>( IConstants.RESPONSE_STATUS_ERROR, environment.getProperty( "user.email.missing" ) );
 		}

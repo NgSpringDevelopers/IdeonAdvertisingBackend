@@ -6,7 +6,7 @@ package com.hasee.ideon.model;
 public class ESResponse<T>
 {
 	private int status;
-	private T data;
+	private T body;
 	private String message;
 
 	public ESResponse( int status, String message )
@@ -15,10 +15,10 @@ public class ESResponse<T>
 		this.message = message;
 	}
 
-	public ESResponse( int status, T data, String message )
+	public ESResponse( int status, T body, String message )
 	{
 		this.status = status;
-		this.data = data;
+		this.body = body;
 		this.message = message;
 	}
 
@@ -36,14 +36,14 @@ public class ESResponse<T>
 		this.status = status;
 	}
 
-	public T getData()
+	public T getBody()
 	{
-		return data;
+		return body;
 	}
 
-	public void setData( T data )
+	public void setBody( T body )
 	{
-		this.data = data;
+		this.body = body;
 	}
 
 	public String getMessage()
